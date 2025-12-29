@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:"Poppins", serif; ;
+}
+
+.main_box{
+    background:url("photo.jpg");
+    height: 100vh; /* 100 of the space of screen ( 100%  view port)  (pura jitna screen pe dikhayi de raha hai  */
+    background-size: cover;
+
+}
+.btn_one i {   /*hamberger */
+    color: white;
+    font-size:30px;
+    font-weight: 700;
+    position:absolute; /*filhal isske parent (jo ki main_boox hai) usko koi bhi position nahi di hai to isski position body of web page ke respect me lagegegi*/
+    left: 16px;/* web page ke left side se   */
+    line-height:60px;
+    cursor: pointer;
+    z-index: 1;
+    transition:all 0.3s linear ;
+
+}
+.sidebar_menu{ /* jo bagal me dikh raha */
+    position: fixed; /*screen ke hisab se set hogi postion  */
+    left: -300px;
+    height: 100vh;
+    width: 300px;
+    background-color: rgba(255,255,255,0.1);
+    box-shadow: 0 0 6px rgba(255,255,255,0.5);
+    transition:all 0.3s linear ;
+
+}
+.sidebar_menu .logo{ /* sidebar menu ke under jo logo hai */
+    position: absolute;/*side baar menue ke according */
+    width:100%;
+    line-height:60px;  /* isssme and height me itnna hi ntar hai ki */
+    height: 60px;   
+    box-shadow:0 2px 4px rgba(255,255,255,0.1);
+}
+.sidebar_menu .logo a{
+    position:absolute;
+    left:50px;
+    color:white;
+    text-decoration: none;
+    font-size: 20px;
+    
+
+    font-weight: 500;
+}
+.sidebar_menu .btn_two i {
+    color: grey;
+    font-size:25px;
+    line-height:60px;
+    position: absolute;
+    left: 270px;
+    opacity: 0;
+    /* important  */
+    cursor: pointer;
+    transition:all 0.3s linear ;
+
+    
+}
+.sidebar_menu .menu{
+    position:absolute;
+    width:100%; 
+    cursor: pointer;
+
+    top:80px;
+}
+.sidebar_menu .menu li {
+    margin-top:6px;
+    padding: 14px 20px;
+    cursor: pointer;
+
+
+}
+.sidebar_menu .menu i,
+a{
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+    cursor: pointer;
+
+    
+}
+.sidebar_menu .menu i{
+    cursor: pointer;
+
+    padding-right: 8px;  
+    
+}
+.sidebar_menu .social_media{
+    color:white;
+    /* opacity:0.5; */
+    position:absolute; /* (parent ke releative me location)(yani parent jaha hai usse 25% awye)        */
+    /* position:fixed; */
+    left:25%;
+    cursor: pointer;
+
+    bottom:50px;
+    
+
+}
+.sidebar_menu .social_media i {
+    color:white ;
+    opacity:0.5;
+    padding:0 5px;
+    cursor: pointer;
+    transition:all 0.3s linear ;
+}
+#check{
+    display: none;/* ye element screen se gayab ho jayega and no space will be there for it */
+    /* jo screen pe reserve thi wo bhi htt jayengi  */
+}
+.btn_one i{
+    cursor: pointer;
+}
+/* ............................................................................................................................... */
+.sidebar_menu .menu li:hover{
+    box-shadow:0 0 4px rgba(255,255,255,0.5); 
+}
+.btn_one i:hover {
+    font-size:35px;
+
+}
+.btn_two i:hover{
+    font-size:30px;
+    
+}
+.sidebar_menu .social_media i:hover {
+    opacity:1;
+    transform:scale(1.2);
+}
+
+/* --------------------------------------------------------------------------------------------------- */
+#check:checked /*check box checked state me ajaye */ ~/*siblings only */ .sidebar_menu{  /*jaise hi mera checkbox checked state me aajaye to mera sidebar menu ki left se distance 0 ho jaye */
+    left: 0px;
+}
+/* hambuger --->checked state mee aajane se checksed state me aajayega and cross btn ko click krne se unchecked state me aajyega   */
+#check:checked  ~ .btn_one i{
+    opacity:0;
+}
+  
+#check:checked ~.sidebar_menu .btn_two i{
+    opacity:1;
+}
+

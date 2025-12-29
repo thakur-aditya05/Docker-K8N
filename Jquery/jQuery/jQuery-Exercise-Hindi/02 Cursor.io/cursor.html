@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pseudo Cursor IO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 38px;
+            font-weight: 900;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            cursor: default;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        .cursor {
+            height: 20px;
+            width: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: white;
+            mix-blend-mode: difference;
+            z-index: 1;
+            border-radius: 100%;
+            pointer-events: none;
+            transition: transform 2s;
+        }
+
+        h1:hover+.cursor {
+            transform: scale(10);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="main">
+        <h1>Subscibe For More !</h1>
+        <div class="cursor"></div>
+    </div>
+</body>
+
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</html>
+<script>
+    $(document).ready(function () {
+        $(document).ready(() => {
+            $(document).mousemove((e) => {
+                let mycursor = $(".cursor");
+                mycursor.attr("style", "top:" + (e.pageY - 5) + "px; left:" + (e.pageX - 7) + "px;")
+            })
+        })
+    })
+</script>

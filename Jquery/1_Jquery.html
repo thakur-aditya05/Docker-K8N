@@ -1,0 +1,94 @@
+
+<!-- // https://youtu.be/wUBxIARMBSo?si=mlpUJmkr96ldFlOo
+// https://youtu.be/DBMPXJJfQEA?si=R6_dckRaUCkt4EHN
+// https://youtu.be/tTCam8KGVRE?si=-GNmgEqaEE4IL2-O
+// https://youtu.be/yl9pwazDHUw?si=6k69Gcku9vPu0Q49 -->
+
+
+<!-- // https://jquery.com/ -->
+
+
+
+<!-- // dom manuplation  -->
+
+
+<!-- // Download jQuery Migrate 1.4.1 (compressed production version)  // production level pe issko use krte hai 
+// Download the uncompressed, development jQuery Migrate 1.4.1  // this is used to woork in explainning the code  -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="./js/jquery-migrate-1.4.1.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</html>
+
+
+    <h1>jQuery</h1>
+    <p id="id">this is my para</p>
+    <p class="class">this is my para 1</p>
+    <p>this is my para 2</p>
+    <p>this is my para 3 </p>
+    <p>this is my para 4</p>
+
+<script>
+    console.log($);
+    console.log(jQuery);
+
+    // $('selector').action(); // comment this or will get stick 
+
+
+    console.log("We are using jQuery");
+    // jQuery Syntax looks like this
+    // $('selector').action()
+
+    //clicks on all the p elements.
+    $('p').click(); //click on p
+    $('p').click(function () {
+        console.log('you clicked on p', this);
+        $('#id').hide();
+        $('.class').hide();
+    }); //do this when we click on p
+
+    
+    $('p').dblclick(function () {
+        console.log('you double clicked on p', this);
+        $('#id').hide();
+        $('.class').hide();
+    });
+
+    $('p').hover(function () {
+        console.log('you hoverd on: ', this);
+         $('#id').hide();
+         $('.class').hide();
+    },
+    function (){
+
+        console.log('Thanks for coming')
+    });
+
+
+    // there are three main types of selectors in jQuery 
+    // 1. element selector
+    // 2. id selector
+    // 3. class selector
+
+    // 1. Element selector -  This is an example of element selector which clicks on all p
+    // $('p').click();
+
+    // 2. Id selector - this is an example of id selector
+    // $('#second').click();
+
+    // 3. Class selector - this is an example of id selector
+    // $('.odd').click();
+
+
+</script>

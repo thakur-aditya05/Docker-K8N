@@ -1,0 +1,45 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="./js/jquery-migrate-1.4.1.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</html>
+
+
+    <h1>jQuery</h1>
+    <p id="id">this is my id  para</p>
+    <p class="class">this is my class para 1</p>
+    <p>this is my para 2</p>
+    <p>this is my para 3 </p>
+    <p>this is my para 4</p>
+
+<script>
+
+
+    $(document).ready(function () {
+
+
+    // other selectors
+    $('*').click(function(){
+        console.log("i am all elecemnet selector ")
+    }) // clicks on all the elements
+    $('p.odd').click(function(){
+        console.log("i am para off odd class ")
+    }) // clicks on all the elements
+    $('p:first').click(function(){
+        console.log("i am 1st para ")
+    }) // clicks on all the elements
+
+
+
+    })
+</script>

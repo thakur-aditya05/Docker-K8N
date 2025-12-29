@@ -1,0 +1,67 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script src="./js/jquery-migrate-1.4.1.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</html>
+
+
+    <h1>jQuery</h1>
+    <p id="id">this is my id  para</p>
+    <p class="class">this is my class para 1</p>
+    <p>this is my para 2</p>
+    <p>this is my para 3 </p>
+    <p>this is my para 4</p>
+
+<script>
+
+
+    $(document).ready(function () {
+
+    // doublle click event are handled 
+    $('p').dblclick(function () {
+        console.log('you double clicked on p', this);
+        $('#id').hide();
+        $('.class').hide();
+    });
+
+    // hoverring event  
+    $('p').hover(function () {
+        // this is for mouse enter 
+        console.log('you hoverd on: ', this);
+         $('#id').hide();
+         $('.class').hide();
+    },
+    // this is for mouse exits   
+    function (event){
+
+        console.log(`${this.type} ${event.type}`)
+
+    });
+
+
+    // there are three main types of selectors in jQuery 
+    // 1. element selector
+    // 2. id selector
+    // 3. class selector
+
+    // 1. Element selector -  This is an example of element selector which clicks on all p
+    $('p').click();
+
+    // 2. Id selector - this is an example of id selector
+    $('#second').click();
+
+    // 3. Class selector - this is an example of id selector
+    $('.odd').click();
+
+    })
+</script>

@@ -1,0 +1,43 @@
+
+# file name should be : resource_name.yaml
+# like here resource_name is <nginx-deployment>
+
+
+# we give it the version of the api we are using
+apiVersion: apps/v1
+# we give the kind of resource we are creating(i.e kis tarike ka resource create karna chahte hai)
+# like service, deployment, configmap, secret etc
+kind: Deployment
+
+# part 1 :
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+# part 2 :
+spec:
+  replicas: 1 # kitne pods chahiye 
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.24
+        ports:
+        - containerPort: 5000 # pod ke jo request aayengi wo is port pe aayengi
+
+# part 3 : <fill by k8n>
+
+# yaml file is divided into 3 sections
+# 1. metadata (data about data: additinal information store krte hai ) : jisme resource ka name and labels diye jate hai
+# 2. spec (specification of the resource) : jisme resource ki details di jati hai
+    # kitne replicas chahiye, kaunse container chahiye, kaunsa image chahiye, kitne pods chahiye 
+
+# 3. status (current status of the resource) : ye section automatically fill hota hai jab hum resource create karte hai
+    # isme resource ka current state show hota hai jaise ki kitne pods chal rahe hai, kitne replicas chal rahe hai etc
+    # hum is section ko manually nahi likhte hai, ye kubernetes khud fill karta hai jab resource create hota hai

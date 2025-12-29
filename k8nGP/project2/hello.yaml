@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hello
+  template:
+    metadata:
+      labels:
+        app: hello
+    spec:
+      containers:
+        - name: hello
+          image: hashicorp/http-echo
+          args:
+            - "-text=Hello from Ingress!"
+          ports:
+            - containerPort: 5678
+
+
+
+--- # seperation of the 
+# ne type is descirbe so this is an internal services
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-world-service
+spec:
+  selector:
+    app: hello
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 5678

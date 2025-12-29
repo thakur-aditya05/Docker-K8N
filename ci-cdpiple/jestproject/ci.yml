@@ -1,0 +1,43 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Node.js CI
+
+on:
+# jb bhi evnet me main brunch me push ho to set of the acton tigger hio
+  push:
+    branches: [ "main" ]
+    # pull pe koi action trigger nahi krna hai mujhe 
+  # pull_request:
+  #   branches: [ "main" ]
+
+
+# ek job hai build kaval 
+jobs:
+  build:
+# we want to run all the command onto ubunto server gof the githb 
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+      # whole project can be build on the whole verson of the noe
+        node-version: [ 22.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    # multiple developer ne multiple action already inbikty krke rakha hua hai usnko directly as a package use krne je liye ye commad likhte hai 
+    # https://github.com/actions/checkout
+    - uses: actions/checkout@v4
+    # kon sa nodjs version use hoga 
+    
+    - name: Use Node.js ${{ matrix.node-version }}
+    # version setup kasie krna hai wo likha hua hai 
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+        # npm ci is simmilar to npm i that is installation 
+    - run: npm ci  # sarnad for clean install
+    - run: npm run build --if-present # fot buiding 
+    - run: npm test # for testing jaise hmne manually run ki thi 
+

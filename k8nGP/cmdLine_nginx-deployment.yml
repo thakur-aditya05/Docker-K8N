@@ -1,0 +1,42 @@
+# this is the code mam written using the cmd line
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.24
+        ports:
+        - containerPort: 80
+
+
+
+# save it using :  esc :wq
+# apply using : kubectl apply -f cmdLine_nginx-deployment.yml
+# check using : kubectl get deployments
+# to check pods : kubectl get pods
+
+# to open the same file again use : vim cmdLine_nginx-deployment.yml
+# edit using : press i to enter into insert mode,, make replica 2,, then esc :wq to save and exit
+# apply the changes using : kubectl apply -f cmdLine_nginx-deployment.yml
+# to check pods : kubectl get pods
+# to check the replicas : kubectl get replicasets
+
+
+
+# to delete the deployment : kubectl delete -f cmdLine_nginx-deployment.yml
+# to delete the file  : rm cmdLine_nginx-deployment.yml

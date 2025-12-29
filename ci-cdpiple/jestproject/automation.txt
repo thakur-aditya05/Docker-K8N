@@ -1,0 +1,4 @@
+continous integration nodejs by git action build and test a node.js project with npm 
+config this 
+
+we will have our own yaml file 

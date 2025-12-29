@@ -1,0 +1,41 @@
+# step 1
+New-Item -Path 'c:\' -Name 'minikube' -ItemType Directory -Force
+$ProgressPreference = 'SilentlyContinue'; Invoke-WebRequest -OutFile 'c:\minikube\minikube.exe' -Uri 'https://github.com/kubernetes/minikube/releases/latest/download/minikube-windows-amd64.exe' -UseBasicParsing
+(past into powershel  line )
+pust admin password 
+
+
+
+# step 2:
+to verify type 
+minikube minikube version
+kubectl
+
+# step 3:
+docker need to be insatlled 
+
+# step 4:
+minikube start 
+
+# to stop 
+minikube stop 
+
+ 
+
+# step 5 
+to check the status --> minikube status 
+
+# step 6
+kubectl get nodes
+kubectl get pod
+kubectl get services   
+
+
+
+# step 7
+(to create the node we need to create deployement 1st then deployement creates pods)
+kubectl create deployement nginx-deployement --image=ingenx
+(to verify) 
+kubectl get deployements
+kubectl get pods (pod name have ==>deployement name + replica set id + pod id)
+kubectl get replicasets (replicaset id is equal to ==>dployement id +replica set id )

@@ -1,0 +1,81 @@
+# file what has done 
+
+# make the mongodb-deployement.yaml file
+# make the mongodb-service.yaml file
+
+# to see the current deployement and services
+# kubectl get all
+# crete a secret for mongodb
+# kubectl apply -f mongodb-secret.yaml
+# kubectl get secrets
+
+# make deployment
+# kubectl apply -f mongodb-deployment.yaml
+# kubectl get deployments 
+
+# kubectl describe <pod_name>
+
+
+# step 3 
+# write the service file configuration 
+      # can write ib the same file of the respective deployment or in different file 
+# kubectl apply -f mongodb-deployment.yaml
+# kubectl describe service mongodb-service
+# kubectl get pods -o wide
+
+
+# step 4
+    # to delete the resources
+    # kubectl delete -f mongodb-deployment.yaml
+    # kubectl delete -f mongodb-secret.yaml
+    # rename all the files 
+      # like mongodb-deployment.yaml to mongo.yml
+
+
+# step 5
+# make mongo-express.yaml file
+# make mongo-configmap.yaml file
+# kubectl apply -f mongo-configmap.yaml
+# kubectl apply -f mongo-express.yaml
+# kubectl get all
+
+
+# step 6
+# verify all the items present in it 
+# kubectl get pods
+# kubectl logs <pod_name>
+
+# step 7 
+# lets create the external service in mongo-express.yml
+# kubectl apply -f mongo-express.yaml
+
+
+# step 8
+# providing the ip address to the loadbalancer service
+# kubectl get services
+# minikube service mongo-express-service
+# it will give the url to access the mongo-express web ui
+
+# Finally 
+# we are now inside the mongo-express web ui
+
+# to delete the resources
+  # kubectl delete -f mongo-express.yaml
+  # kubectl delete -f mongo-configmap.yaml
+  # kubectl delete -f mongodb.yaml
+  # kubectl delete -f mongodb-secret.yaml
+
+# to see the status 
+#   kubectl get all 
+
+
+
+
+
+# at very end also create ingress component to access the mongo-express web ui 
+    # remove type loadbalancer from the service file 
+    # remove nodeport from the service file
+# create ingress.yaml file
+# kubectl apply -f ingress.yaml
+
+# this is complete procedure file for mongodb with mongo-express deployment and services with secret and configmap in K8N

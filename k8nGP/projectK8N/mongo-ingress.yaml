@@ -1,0 +1,33 @@
+# Ingress works as a entry point for the external traffic to the internal services in the kubernetes cluster 
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mongo-express-ingress
+# we defines the rules to route the traffic to the internal service
+spec:
+  rules: 
+  - host: app.com  # valid domain name required must having access to us 
+    http:    # this is not the protocols 
+      paths:
+      # - pathType: Prefix  # optional # not used by shardha mam
+      #   path: "/"   # optional  # not used by shardha mam 
+        backend:
+          service:
+            name: mongo-express-service # internal service
+            port:
+              number: 8081
+
+
+
+
+
+
+
+#  -----
+# writing few things for understanding purpose
+# this  about that how ingress works \
+# setting up of the ingress controller is not included here 
+# -----
+#  INGRESS CONTROLLER is the COmponent which ACTUALLY routes the traffic from external world to the internal services
+# it will create the pod in the cluster and will monitor(process and evaluate all the ingress rules or we can sey routing rules ) the ingress resources and this pod is called INGRESS CONTROLLER POD

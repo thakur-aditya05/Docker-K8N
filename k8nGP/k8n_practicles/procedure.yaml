@@ -1,0 +1,13 @@
+# make deployment
+# make services 
+# kubctl apply -f ngnex-deployment.yml
+# kubctl apply -f ngnex-service.yml
+
+#  to see the status  
+#   
+
+
+# to delete the resources
+  # kubectl delete -f nginx-deployment.yaml
+  # kubectl delete -f nginx-services.yaml
+ 

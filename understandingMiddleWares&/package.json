@@ -1,0 +1,27 @@
+{
+   
+  "scripts": {
+   
+     
+  "start": "vite"
+   
+  },
+   
+  "description": "",
+   
+  "dependencies": {
+   
+     
+  "ejs": "^3.1.10",
+   
+     
+  "express": "^4.21.2",
+   
+     
+  "mongoose": "^8.9.3",
+   
+     
+  "vite": "^6.0.6"
+   
+  }
+}

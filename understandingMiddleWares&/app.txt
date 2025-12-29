@@ -1,0 +1,40 @@
+question_1)when my vs terminal was not working for nodemon---------------
+    Get-ExecutionPolicy
+    Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+>____________________________________
+express deafult error handeler is 
+https://expressjs.com/en/guide/error-handling.html
+Express comes with a built-in error handler that takes care of any errors that might be encountered in the app. 
+This default error-handling middleware function is added at the end of the middleware function stack.
+>____________________________________
+
+4xx wale client side error hote hai jo client side generete hot hai 
+
+>>>
+throw new Error("ACCESS DENIED") inbuilt class hoti hai  espress ke under
+
+..>>>
+how default error handler work ?
+deafult error handler ek satatus code dudhtha hai err object ke under jiske under status code hona chahiye if this value is not in the range  
+of 4xx and 5xx  to by default express error handler usko 500 pe set kr dega  
+
+but yaha pe custom erorr class defined kr rahe hai orr iss code ko execute kr rahe hai 
+app.get("/err", (req, res) => {
+   abcd=abcd; //jo error object hai uske pass koi valid erro code nahin  hai 
+});
+to koi error code generate nahi hua na hi hi koi express error throw hua to jb issline pr aaye 
+let {status,message}=err; to error object ke under koi code raha hi nahi is liye status code ki value 
+isme undefined print hui ("RangeError [ERR_HTTP_INVALID_STATUS_CODE]: Invalid status code: undefined")
+
+
+res.status(status).send(message); is line res. status me set kr rahe hai status ko jo ki undefined hai 
+to ye error us  undefined error ki wajah se aaya hai 
+
+let {status =500,message}=err;  ab 500 status code dikhayi de raha hai  
+______________________________________>>
+
+
+
+
+
+

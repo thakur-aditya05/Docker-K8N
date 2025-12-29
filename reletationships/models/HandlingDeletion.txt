@@ -1,0 +1,32 @@
+https://mongoosejs.com/docs/middleware.html   >>>>>mongoose middleware link "this refers to the query."
+
+###############################################Handling Deleletion##################################
+hmm chahte hai ki query execute hone se pahle koi kaam ho to usko pre middleware ke under kr skte hai ("https://mongoosejs.com/docs/middleware.html#pre")
+orr agar
+query execute hone se baad koi kaam ho to usko post middleware ke under kr skte hai 
+orr to orr ek baat issme se koi bhi function/methode findById ki tarah nahi hai 
+("findOne, findOneAndDelete, findOneAndReplace, findOneAndUpdate");
+but models ke under jb ((https://mongoosejs.com/docs/api/model.html#Model.findByIdAndDelete())----->This function triggers the following middleware. findOneAndDelete())
+This function triggers the following middleware.
+findOneAndDelete() ye likha hua hai 
+conclusion ye hai ki jb ye jbb "findByIdAndDelete" ko call krte hai to automatically "findOneAndDelete" middleware ko call jati hai 
+to agar hamm "findOneAndDelete" middleware ke liye ek mongoose middleware ko aur defined kr diya to at the end ye hoga ki pahle "findByIdAndDelete"  ko execute krne pr  "findOneAndDelete" middleware ko calljayegi uske baad fir hamre mongoose middleware ko call laga dega 
+we dont have any middle ware to execute findById but findOneAndDelete ke middleware hota hai and findOneAndDelete  khud ek middleware hai for findByIdAndDelete to agar  findByIdAndDelete findOneAndDelete ko triigger kr raha hai and findOneAndDelete ke liye koi additional cheez bana di jaise mongoose middleware jo trigger ho rahi hai  to ussi case me agar findbyid and delete ko trigger krne pr hamra moongoose middleware trigger ho jayega (even usme id naam ka koi functon nahi tha ) 
+ mongoose middleware pre bhi ho skta  hai or post bhi 
+
+customerSchema.post('findOneAndDelete', async (customer)=> { //customer delete hone ke baad order bhi delete ho jaye 
+    console.log("Post middleware")
+    console.log(customer);// customer object itself jo delete ho raha hai ------> isska mtllab isske pass puri access hoti hai customer ki   to chalo isska fayada uthate hai--->isske pass jitne bhi order hai unn sbko delete kr dete hai 
+    if(customer.order.length){
+        let res=await Order.deleteMany({_id:{$in: customer.order }});
+        console.log(res);//query ko acknowledge kr liya gaya hai orr --->"await Order.deleteMany({_id:{$in: customer.order }});" iss wale method ne do cheej ko dlete kiya hai ye hai isska matlab ("{ acknowledged: true, deletedCount: 2 }")
+        console.log("successfull run");
+    }
+// jaise hi customer ko delte kiya gaya waise hi order bhi delete ho gaya iss tarah usser and post wale me jaie hi user delete hota hai to uske saare ke saare post bhi delete ho jaye 
+});
+
+this is method to delete ek modele ki saari wo cheeje jo dusare model me hai orr wo model se document delete ho gaya hai 
+customer delete ----> but order ka delete hona jaruri nahi hai 
+customer delete ----> to order ka delete hona jaruri  hai 
+
+################################Handling Deleletion over #####################33
